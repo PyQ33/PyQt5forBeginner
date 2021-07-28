@@ -2,7 +2,27 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 
+# Read QtDesign ( uic )
 form_class = uic.loadUiType("checkboxTest.ui")[0]
+# form_class = uic.loadUiType(UIFileNAME)[0]
+
+
+"""
+class WindowClass(QMainWindow, form_class):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        
+        # QtDesigner 로 열면 보임 , 객체의 트리구조 (with Class NAME )
+        self.chk_1.stateChanged.connect(self.chkFunction)
+        ....
+        
+        # Group Box 안으로
+        self.groupchk_1.stateChange.connect(self.groupchkFunction)
+
+"""
+
+
 
 class WindowClass(QMainWindow, form_class) :
     def __init__(self) :
@@ -20,6 +40,14 @@ class WindowClass(QMainWindow, form_class) :
         self.groupchk_2.stateChanged.connect(self.groupchkFunction)
         self.groupchk_3.stateChanged.connect(self.groupchkFunction)
         self.groupchk_4.stateChanged.connect(self.groupchkFunction)
+
+    # 한줄에 if , action
+    """
+    def chkFunction(self):
+        if self.chk_1.isChecked(): print('Chk_1 isChecked")
+        ...
+    
+    """
 
     def chkFunction(self) :
         #CheckBox는 여러개가 선택될 수 있기 때문에 elif를 사용하지 않습니다.
@@ -39,3 +67,12 @@ if __name__ == "__main__" :
     myWindow = WindowClass()
     myWindow.show()
     app.exec_()
+
+"""
+if __name__ == "__main__" :
+    app = QApplication(sys.argv)
+    myWindow = WindowClass()
+    myWindow.show()
+    app.exec_()
+
+"""

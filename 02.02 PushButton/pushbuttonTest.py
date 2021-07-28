@@ -12,7 +12,9 @@ class WindowClass(QMainWindow, form_class) :
         super().__init__()
         self.setupUi(self)
         #test
-
+        # 버튼에 기능을 연결하는 코드
+        # .ui 파일에  버튼클래스를 정의해두었음
+        #   <widget class="QPushButton" name="btn_1">
         self.btn_1.clicked.connect(self.button1Function)
         self.btn_2.clicked.connect(self.button2Function)
 
